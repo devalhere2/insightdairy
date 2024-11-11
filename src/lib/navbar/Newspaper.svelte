@@ -1,5 +1,5 @@
 <div>
-    <img src="newspaper.png" style="height: 30px;" alt="" />
+    <img src="newspaper.png" style="height: 25px;" alt="" />
 </div>
 
 <style>
