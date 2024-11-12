@@ -2,6 +2,17 @@
     import Newspaper from "$lib/navbar/Newspaper.svelte";
     import Profile from "$lib/navbar/Profile.svelte";
     import Search from "$lib/navbar/Search.svelte";
+
+    import { displayWidth } from "$lib/store";
+    import { onMount } from "svelte";
+
+    onMount(()=>{
+        function updateWidth() {
+            displayWidth.set(window.innerWidth);
+        }
+        window.addEventListener('resize', updateWidth);
+        updateWidth();
+    })
 </script>
 
 <main>
@@ -10,7 +21,7 @@
             <Newspaper />
         </div>
         <div class="site-name">InsightDairy</div>
-        <div class="search-bar">
+        <div class="search-bar { $displayWidth < 900 ? "tiny": ''}">
             <Search />
         </div>
         <Profile />
@@ -44,7 +55,9 @@
 
     .search-bar {
         width: 300px;
-
+    }
+    .search-bar.tiny {
+        width: fit-content;
     }
 
 </style>
